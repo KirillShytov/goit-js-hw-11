@@ -14,8 +14,27 @@ const startBtn = document.querySelector('.search-button');
 const loader = document.querySelector('.loader');
 
 function createMarkup(arr) {
-  return arr.map(
-    ({ webformatURL, largeImage, URLtags, likesviews, comments, downloads }) =>
-      ``
-  );
+  return arr
+    .map(
+      ({
+        webformatURL,
+        largeImageUrl,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) =>
+        `<li class="gallery-item">
+      <a class="gallerry-link" href="${largeImageUrl}">
+      <img
+      class="gallery-image"
+      src="${webformatURL}"
+      alt="${tags}"
+      />
+      <p class="gallery-description">• Likes: ${likes} • Views: ${views} • Comments: ${comments} • Downloads:${downloads}</p>
+      </a>
+      </li>`
+    )
+    .join('');
 }
